@@ -10,6 +10,7 @@ import ReactiveSwift
 
 public final class SpeakerComputedMock: SpeakerComputed {
     public var dataState: Property<SpeakerDataComposer.State>
+    public var someEvent: Signal<Void, Never> = .empty
 
     public init(
         dataState: SpeakerDataComposer.State
@@ -24,6 +25,8 @@ public final class SpeakerAdapterMock: SpeakerAdapterProtocol {
     public var dataComposer: SpeakerDataComposer {
         SpeakerDataComposer()
     }
+
+    public func sendSomething() {}
 
     public init(
         computed: SpeakerComputed

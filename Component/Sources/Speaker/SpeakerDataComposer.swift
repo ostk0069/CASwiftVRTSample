@@ -19,8 +19,7 @@ public struct SpeakerDataComposer {
         }
     }
 
-    public init() {
-    }
+    public init() {}
 
     enum SectionID {
         case speaker

@@ -8,25 +8,32 @@
 import Carbon
 import UIKit
 
-struct SpeakerComponent: IdentifiableComponent {
+public struct SpeakerComponent: IdentifiableComponent {
     var speaker: Speaker
 
-    var id: String {
+    public var id: String {
         speaker.name
     }
 
-    func referenceSize(in bounds: CGRect) -> CGSize? {
-        CGSize(width: bounds.width, height: 80)
+    public init(
+        speaker: Speaker
+    ) {
+        self.speaker = speaker
     }
 
-    func shouldRender(next: SpeakerComponent, in content: SpeakerView) -> Bool {
+    public func referenceSize(in bounds: CGRect) -> CGSize? {
+        CGSize(width: bounds.width, height: 44)
+    }
+
+    public func shouldRender(next: SpeakerComponent, in content: SpeakerView) -> Bool {
         false
     }
 }
 
-final class SpeakerView: UIView, NibLoadable, Rendable {
-    typealias Component = SpeakerComponent
+public final class SpeakerView: UIView, NibLoadable, Rendable {
+    @IBOutlet weak var titleLabel: UILabel!
 
-    func render(with component: SpeakerComponent) {
+    public func render(with component: SpeakerComponent) {
+        titleLabel.text = component.speaker.name
     }
 }
