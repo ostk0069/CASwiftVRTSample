@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import Component
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if #available(iOS 13, *) {}
+        else {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = window
+            let adapter = SpeakerAdapter()
+            window.rootViewController = SpeakerViewController(adapter: adapter)
+            window.makeKeyAndVisible()
+        }
         return true
     }
 

@@ -1,0 +1,5 @@
+github "ReactiveCocoa/ReactiveCocoa"
+github "ReactiveCocoa/ReactiveSwift"
+github "takumaosada/Carbon" "fix-init-bug"
+github "ra1028/VueFlux"
+github "playbook-ui/playbook-ios"

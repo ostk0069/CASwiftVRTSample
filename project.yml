@@ -1,0 +1,118 @@
+name: CASwiftSample
+options:
+  deploymentTarget:
+    iOS: "14.0"
+  bundleIdPrefix: com.takumaosada
+
+schemes:
+  CASwiftSample:
+    build:
+      targets:
+        CASwiftSample: all
+        CASwiftSampleTests:
+          - test
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - name: CASwiftSampleTests
+          parallelizable: true
+          randomExecutionOrder: true
+
+  UICatalog:
+    build:
+      targets:
+        UICatalog: all
+        UICatalogTests:
+          - test
+    run:
+      config: Debug
+      environmentVariables:
+        SNAPSHOT_DIR: $(SOURCE_ROOT)/Snapshots
+    test:
+      config: Debug
+      targets:
+        - name: UICatalogTests
+          parallelizable: true
+          randomExecutionOrder: true
+
+targets:
+  CASwiftSample:
+    type: application
+    platform: iOS
+    sources:
+      - path: CASwiftSample
+    dependencies:
+      - framework: "Carthage/Build/ReactiveSwift.xcframework"
+      - framework: "Carthage/Build/ReactiveCocoa.xcframework"
+      - framework: "Carthage/Build/DifferenceKit.xcframework"
+      - framework: "Carthage/Build/Carbon.xcframework"
+      - framework: "Carthage/Build/VueFlux.xcframework"
+      - target: Component
+
+  CASwiftSampleTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - CASwiftSampleTests
+    dependencies:
+      - target: CASwiftSample
+      - target: Mock
+
+  Component:
+    type: framework
+    platform: iOS
+    sources:
+      - Component
+    dependencies:
+      - framework: "Carthage/Build/ReactiveCocoa.xcframework"
+      - framework: "Carthage/Build/ReactiveSwift.xcframework"
+      - framework: "Carthage/Build/Carbon.xcframework"
+      - framework: "Carthage/Build/DifferenceKit.xcframework"
+      - framework: "Carthage/Build/VueFlux.xcframework"
+
+  ComponentTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - ComponentTests
+    dependencies:
+      - target: Component
+
+  UICatalog:
+    type: application
+    platform: iOS
+    sources:
+      - path: UICatalog
+    dependencies:
+      - framework: "Carthage/Build/Carbon.xcframework"
+      - framework: "Carthage/Build/DifferenceKit.xcframework"
+      - framework: "Carthage/Build/Playbook.xcframework"
+      - framework: "Carthage/Build/PlaybookUI.xcframework"
+      - target: Component
+      - target: Mock
+
+  UICatalogTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - UICatalogTests
+    dependencies:
+      - target: UICatalog
+
+  Mock:
+    type: framework
+    platform: iOS
+    sources:
+      - Mock
+    dependencies:
+      - target: Component
+  
+  MockTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - MockTests
+    dependencies:
+      - target: Mock
