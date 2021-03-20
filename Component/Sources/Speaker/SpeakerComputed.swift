@@ -9,4 +9,5 @@ import ReactiveSwift
 
 public protocol SpeakerComputed {
     var dataState: Property<SpeakerDataComposer.State> { get }
+    var someEvent: Signal<Void, Never> { get }
 }

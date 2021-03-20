@@ -8,4 +8,6 @@
 public protocol SpeakerAdapterProtocol {
     var computed: SpeakerComputed { get }
     var dataComposer: SpeakerDataComposer { get }
+
+    func sendSomething()
 }

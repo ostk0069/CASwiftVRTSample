@@ -11,8 +11,8 @@ import UIKit
 struct SpeakerComponent: IdentifiableComponent {
     var speaker: Speaker
 
-    var id: Speaker.ID {
-        speaker.id
+    var id: String {
+        speaker.name
     }
 
     func referenceSize(in bounds: CGRect) -> CGSize? {

@@ -19,5 +19,31 @@ struct SpeakerScenario: ScenarioProvider {
                 return SpeakerViewController(adapter: adapter)
             }
         }
+
+        playbook.addScenarios(of: "Speaker") {
+            Scenario("SpeakerViewController empty", layout: .fill) {
+                let speakers = [
+                    Speaker(
+                        name: "name 1",
+                        title: "title 1",
+                        imageURL: ""
+                    ),
+                    Speaker(
+                        name: "name 2",
+                        title: "title 2",
+                        imageURL: ""
+                    ),
+                    Speaker(
+                        name: "name 3",
+                        title: "title 3",
+                        imageURL: ""
+                    ),
+                ]
+                let dataState = SpeakerDataComposer.State(speakers: speakers)
+                let computed = SpeakerComputedMock(dataState: dataState)
+                let adapter = SpeakerAdapterMock(computed: computed)
+                return SpeakerViewController(adapter: adapter)
+            }
+        }
     }
 }

@@ -18,4 +18,8 @@ final class SpeakerAdapter: SpeakerAdapterProtocol {
     }
 
     private let store = Store<SpeakerState>(state: .init(), mutations: .init(), executor: .mainThread)
+
+    func sendSomething() {
+        store.actions.dispatch(action: .doSomething)
+    }
 }
