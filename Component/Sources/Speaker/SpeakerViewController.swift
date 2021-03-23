@@ -18,7 +18,7 @@ public final class SpeakerViewController: UIViewController, Rendable {
 
     public init(adapter: SpeakerAdapterProtocol) {
         self.adapter = adapter
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nil, bundle: .component)
     }
 
     required init?(coder: NSCoder) {

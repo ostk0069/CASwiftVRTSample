@@ -4,43 +4,13 @@ options:
     iOS: "14.0"
   bundleIdPrefix: com.takumaosada
 
-schemes:
-  CASwiftSample:
-    build:
-      targets:
-        CASwiftSample: all
-        CASwiftSampleTests:
-          - test
-    run:
-      config: Debug
-    test:
-      config: Debug
-      targets:
-        - name: CASwiftSampleTests
-          parallelizable: true
-          randomExecutionOrder: true
-
-  UICatalog:
-    build:
-      targets:
-        UICatalog: all
-        UICatalogTests:
-          - test
-    run:
-      config: Debug
-      environmentVariables:
-        SNAPSHOT_DIR: $(SOURCE_ROOT)/Snapshots
-    test:
-      config: Debug
-      targets:
-        - name: UICatalogTests
-          parallelizable: true
-          randomExecutionOrder: true
-
 targets:
   CASwiftSample:
     type: application
     platform: iOS
+    deploymentTarget: "14.0"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.takumaosada.CASwiftSample
     sources:
       - path: CASwiftSample
     dependencies:
@@ -83,6 +53,9 @@ targets:
   UICatalog:
     type: application
     platform: iOS
+    deploymentTarget: "14.0"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.takumaosada.UICatalog
     sources:
       - path: UICatalog
     dependencies:

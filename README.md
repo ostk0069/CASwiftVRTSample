@@ -1,9 +1,10 @@
-# CASwiftSample
+# CASwiftVRTSample
 
-CA.swift #13 で発表した内容のサンプルコード
+CA.swift #13 で発表したVisual Regression Testのサンプルコード
 
 ## Setup
 ```
 xcodegen
-carthage bootstrap --use-xcframework --platfrom iOS
+carthage bootstrap --platform iOS --use-xcframeworks
 ```
+Please install `XcodeGen` & `Carthage` locally before setup.
